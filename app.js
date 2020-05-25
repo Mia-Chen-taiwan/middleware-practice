@@ -2,9 +2,11 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+///////// Middleware ////////////
 app.use((req, res, next) => {
   const time = new Date()
   const request = `${req.method} from ${req.originalUrl}`
+  // get起始時間
   console.time(`${time.toLocaleString()} | ${request} | Costed time`)
 
   res.on('finish', () => {
