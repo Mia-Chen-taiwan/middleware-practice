@@ -6,12 +6,12 @@ const port = 3000
 app.use((req, res, next) => {
   const time = new Date()
   const request = `${req.method} from ${req.originalUrl}`
-  // get起始時間
-  console.time(`${time.toLocaleString()} | ${request} | Costed time`)
+  // 伺服器收到請求的時間戳記
+  console.time(`${time.toLocaleString()} | ${request} | total time`)
 
   res.on('finish', () => {
-    // 印出結果和傳輸時間
-    console.timeEnd(`${time.toLocaleString()} | ${request} | Costed time`)
+    // 伺服器送出回應的時間
+    console.timeEnd(`${time.toLocaleString()} | ${request} | total time`)
   })
   next()
 })
